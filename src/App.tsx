@@ -24,7 +24,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/services/data-entry" element={<DataEntry />} />
-          <Route path="/services/data-processing" element={<DataProcessing} />
+          <Route path="/services/data-processing" element={<DataProcessing/>} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/login" element={<UserLogin />} />
           <Route
