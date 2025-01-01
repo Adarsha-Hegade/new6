@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Database, Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function Header() {
   const location = useLocation();
@@ -15,6 +15,12 @@ export default function Header() {
     { path: '/contact', label: 'Contact' },
   ];
 
+  const serviceItems = [
+    { path: '/services/data-entry', label: 'Data Entry' },
+    { path: '/services/data-processing', label: 'Data Processing' },
+    { path: '/services/data-analysis', label: 'Data Analysis' },
+  ];
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     if (isDropdownOpen) setIsDropdownOpen(false);
@@ -26,12 +32,12 @@ export default function Header() {
         <div className="flex justify-between items-center px-4 sm:px-6 lg:px-8 h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-  <img src="/logo.png" alt=" Structura DataWorks Logo" className="h-8 w-8" />
-  <div>
-    <span className="text-xl font-bold text-gray-900 block leading-none">Structura</span>
-    <span className="text-sm text-blue-600 font-medium">DataWorks</span>
-  </div>
-</Link>
+            <img src="/logo.png" alt="Structura DataWorks Logo" className="h-8 w-8" />
+            <div>
+              <span className="text-xl font-bold text-gray-900 block leading-none">Structura</span>
+              <span className="text-sm text-blue-600 font-medium">DataWorks</span>
+            </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -58,24 +64,20 @@ export default function Header() {
               </button>
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                  <Link
-                    to="/services/data-entry"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
-                  >
-                    Data Entry
-                  </Link>
-                  <Link
-                    to="/services/data-processing"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
-                  >
-                    Data Processing
-                  </Link>
-                  <Link
-                    to="/services/data-analysis"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
-                  >
-                    Data Analysis
-                  </Link>
+                  {serviceItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`block px-4 py-2 text-sm ${
+                        isActive(item.path)
+                          ? 'text-blue-600 bg-blue-50'
+                          : 'text-gray-700 hover:bg-blue-50'
+                      }`}
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
@@ -116,27 +118,20 @@ export default function Header() {
               ))}
               <div className="px-3 py-2">
                 <div className="font-medium text-gray-600 mb-2">Services</div>
-                <Link
-                  to="/services/data-entry"
-                  className="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Data Entry
-                </Link>
-                <Link
-                  to="/services/data-processing"
-                  className="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Data Processing
-                </Link>
-                <Link
-                  to="/services/data-analysis"
-                  className="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Data Analysis
-                </Link>
+                {serviceItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`block px-3 py-2 text-sm ${
+                      isActive(item.path)
+                        ? 'text-blue-600 bg-blue-50'
+                        : 'text-gray-600 hover:text-blue-600'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
               <Link
                 to="/login"
