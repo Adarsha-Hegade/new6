@@ -20,7 +20,7 @@ export default function AssignmentViewer() {
     lastSaved,
   } = useAssignment(id!);
 
-  console.log('AssignmentViewer render:', { loading, error, assignment });
+  
 
   if (loading) {
     return <LoadingSpinner />;

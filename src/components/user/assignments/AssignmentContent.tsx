@@ -17,11 +17,6 @@ export default function AssignmentContent({
 }: AssignmentContentProps) {
   const isCompleted = assignment.status === 'completed';
 
-  console.log('AssignmentContent render:', { 
-    pdfPath: assignment.assignment.pdf_path,
-    content: content?.substring(0, 100),
-    isCompleted 
-  });
 
   return (
     <div className="flex-1 grid grid-cols-2 gap-4 min-h-0 max-h-full overflow-hidden">
