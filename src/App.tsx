@@ -14,11 +14,13 @@ import DataProcessing from './pages/services/DataProcessing';
 import DataAnalysis from './pages/services/DataAnalysis';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
+import ScrollToTop from './components/shared/ScrollToTop';
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
