@@ -10,9 +10,10 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
 import DataEntry from './pages/services/DataEntry';
+import DataProcessing from './pages/services/DataProcessing';
+import DataAnalysis from './pages/services/DataAnalysis';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
-import DataProcessing from './pages/services/DataProcessing';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/services/data-entry" element={<DataEntry />} />
-          <Route path="/services/data-processing" element={<DataProcessing/>} />
+          <Route path="/services/data-processing" element={<DataProcessing />} />
+          <Route path="/services/data-analysis" element={<DataAnalysis />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/login" element={<UserLogin />} />
           <Route
