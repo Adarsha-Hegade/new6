@@ -9,6 +9,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
+import DataEntry from './pages/services/DataEntry';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/services/data-entry" element={<DataEntry />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/login" element={<UserLogin />} />
           <Route
